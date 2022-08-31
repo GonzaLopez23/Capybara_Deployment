@@ -15,6 +15,20 @@ Por último y no menos importante, los envases para la yerba y también para el 
 
 ## Integrantes:
 Facundo Lucero
+
 Gonzalo Lopez
+
 Ignacio Valente
+
 Juan Rojas
+
+### Referencias
+https://www.mattestore.com/
+
+https://www.somosjaquemate.com/
+
+https://www.un-mate.com.ar/
+
+https://www.del-mate.com.ar/
+
+https://www.matemundo.es/
