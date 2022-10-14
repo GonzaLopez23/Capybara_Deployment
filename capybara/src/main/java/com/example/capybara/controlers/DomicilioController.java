@@ -10,5 +10,5 @@ import com.example.capybara.services.DomicilioServiceImpl;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/domicilio")
-public class DomicilioRepository extends BaseControllerImpl<Domicilio, DomicilioServiceImpl>  {
+public class DomicilioController extends BaseControllerImpl<Domicilio, DomicilioServiceImpl>  {
 }

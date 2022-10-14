@@ -10,5 +10,5 @@ import com.example.capybara.services.ClienteServiceImpl;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/clientes")
-public class ClienteRespository extends BaseControllerImpl<Cliente, ClienteServiceImpl>  {
+public class ClienteController extends BaseControllerImpl<Cliente, ClienteServiceImpl>  {
 }

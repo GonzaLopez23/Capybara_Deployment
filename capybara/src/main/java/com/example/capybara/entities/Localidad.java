@@ -19,6 +19,6 @@ import javax.persistence.Table;
 @Audited
 public class Localidad extends Base{
 
-    @Column(name = "nombre_departamento_localidad")
-    private String nombreDepartamentoLocalidad;
+    @Column(name = "denominacion")
+    private String denominacion;
 }
