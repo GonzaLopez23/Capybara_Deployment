@@ -1,4 +1,4 @@
-package com.example.capybara.controlers;
+package com.example.capybara.controllers;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

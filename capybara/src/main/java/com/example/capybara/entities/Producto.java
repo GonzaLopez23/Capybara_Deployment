@@ -29,7 +29,7 @@ public class Producto extends Base{
     @Column(name = "precio")
     private float precio;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_categoria")
     private Categoria categoria;
 

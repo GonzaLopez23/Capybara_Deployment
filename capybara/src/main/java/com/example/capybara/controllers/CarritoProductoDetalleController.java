@@ -1,4 +1,4 @@
-package com.example.capybara.controlers;
+package com.example.capybara.controllers;
 
 import com.example.capybara.entities.CarritoProductoDetalle;
 import com.example.capybara.services.CarritoProductoDetalleServiceImpl;

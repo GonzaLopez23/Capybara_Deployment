@@ -1,4 +1,4 @@
-package com.example.capybara.controlers;
+package com.example.capybara.controllers;
 
 
 import com.example.capybara.entities.Localidad;
@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/localidad")
+@RequestMapping(path = "api/v1/localidades")
 public class LocalidadController extends BaseControllerImpl<Localidad, LocalidadServiceImpl> {
 }
