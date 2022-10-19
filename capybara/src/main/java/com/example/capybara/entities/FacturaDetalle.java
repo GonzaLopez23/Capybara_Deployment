@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "factura_detalle")
@@ -19,9 +17,12 @@ import javax.persistence.Table;
 @Audited
 public class FacturaDetalle extends Base{
 
-    @Column(name = "cantidad_factura_detalle")
-    private int cantidadFacturaDetalle;
+    private int cantidad;
 
-    @Column(name = "subtotal_factura_detalle")
-    private float subtotalFacturaDetalle;
+    private float subtotal;
+
+    @ManyToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "fk_producto")
+    private Producto producto;
+
 }

@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "factura")
@@ -23,4 +23,7 @@ public class Factura extends Base{
     private int numeroFactura;
 
     private float total;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FacturaDetalle> detalles = new ArrayList<>();
 }

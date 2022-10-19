@@ -9,7 +9,6 @@ import org.hibernate.envers.Audited;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @Table(name = "cliente")
 @Getter
@@ -36,11 +35,6 @@ public class Cliente extends Base{
     private Carrito carrito;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(
-            name = "cliente_facturas",
-            joinColumns = @JoinColumn(name = "cliente_id"),
-            inverseJoinColumns = @JoinColumn(name = "factura_id")
-    )
     private List<Factura> facturasCliente = new ArrayList<Factura>();
 
     @OneToOne(cascade = CascadeType.ALL)
