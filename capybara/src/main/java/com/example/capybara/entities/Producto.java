@@ -7,8 +7,6 @@ import lombok.Setter;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "producto")
@@ -31,9 +29,9 @@ public class Producto extends Base{
     @Column(name = "precio")
     private float precio;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_categoria")
-    private List<Categoria> categorias = new ArrayList<Categoria>();
+    private Categoria categoria;
 
 
 }
