@@ -15,4 +15,6 @@ public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long> imple
     public CategoriaServiceImpl(BaseRepository<Categoria, Long> baseRepository){
         super(baseRepository);
     }
+
+
 }

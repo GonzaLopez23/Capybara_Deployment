@@ -5,7 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.capybara.entities.Cliente;
 import com.example.capybara.repositories.BaseRepository;
 import com.example.capybara.repositories.ClienteRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implements ClienteService{
@@ -16,4 +20,47 @@ public class ClienteServiceImpl extends BaseServiceImpl<Cliente, Long> implement
     public ClienteServiceImpl(BaseRepository<Cliente, Long> baseRepository){
         super(baseRepository);
     }
+
+    @Override
+    public List<Cliente> search(String filtro) throws Exception {
+
+        try {
+
+            List<Cliente> clientes = clienteRepository.search_nombre(filtro);
+            return clientes;
+
+        } catch(Exception e) {
+
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Page<Cliente> search(String filtro, Pageable pageable) throws Exception {
+
+        try {
+
+            Page<Cliente> clientes = clienteRepository.search_nombre(filtro, pageable);
+            return clientes;
+
+        } catch(Exception e) {
+
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Cliente> search(int filtro) throws Exception {
+
+        try {
+
+            List<Cliente> clientes = clienteRepository.search_dni(filtro);
+            return clientes;
+
+        } catch(Exception e) {
+
+            throw new Exception(e.getMessage());
+        }
+    }
+
 }
