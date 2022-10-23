@@ -15,8 +15,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class SearchSpecification<T> implements Specification<T> {
 
-    private static final long serialVersionUID = -9153865343320750644L;
-
     private final transient SearchRequest request;
 
     @Override

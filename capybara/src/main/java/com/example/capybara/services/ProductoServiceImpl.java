@@ -18,7 +18,7 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
         super(baseRepository);
     }
 
-
+    /*
     @Override
     public List<Producto> search(String filtro) throws Exception {
         try{
@@ -28,4 +28,5 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
             throw new Exception(e.getMessage());
         }
     }
+     */
 }

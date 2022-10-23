@@ -1,6 +1,7 @@
 package com.example.capybara.common;
 
 
+import com.example.capybara.entities.Base;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FilterRequest<T>{
+public class FilterRequest<T extends Base>  {
 
     private String key;
 
@@ -23,8 +24,11 @@ public class FilterRequest<T>{
 //    private FieldType fieldType; --> T : class   + key
 
     // object puede ser generic
+
+    /*
     public Object getAtributeType(){
-        return  T[this.key].class;
+        Class cls = T.key.getClass();
+        return  cls.getComponentType();
     }
 
     /*

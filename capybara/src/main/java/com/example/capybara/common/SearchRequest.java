@@ -17,11 +17,8 @@ import java.util.Objects;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class SearchRequest implements Serializable {
 
-    private static final long serialVersionUID = 8514625832019794838L;
+public class SearchRequest {
 
     private List<FilterRequest> filters;
 

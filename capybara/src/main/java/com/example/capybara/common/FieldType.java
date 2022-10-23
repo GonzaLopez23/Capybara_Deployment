@@ -26,7 +26,7 @@ public enum FieldType {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 date = LocalDateTime.parse(value, formatter);
             } catch (Exception e) {
-                log.info("Failed parse field type DATE {}", e.getMessage());
+            //    log.info("Failed parse field type DATE {}", e.getMessage());
             }
 
             return date;
