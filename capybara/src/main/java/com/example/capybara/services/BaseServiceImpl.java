@@ -1,5 +1,8 @@
 package com.example.capybara.services;
 
+import com.example.capybara.common.SearchRequest;
+import com.example.capybara.common.SearchSpecification;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -35,6 +38,23 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             throw new Exception(e.getMessage());
         }
     }
+
+
+    @Override
+    public Page<E> search(SearchRequest request) throws Exception{
+
+        try {
+            SearchSpecification<E> specification = new SearchSpecification<>(request);
+            Pageable pageable = SearchSpecification.getPageable(request.getPage(),request.getSize());
+            return baseRepository.findAll(specification,pageable);
+
+        } catch(Exception e) {
+
+            throw new Exception(e.getMessage());
+        }
+
+    }
+
 
     @Override
     @Transactional

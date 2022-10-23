@@ -1,7 +1,6 @@
 package com.example.capybara.common;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
+
 @AllArgsConstructor
 public class SearchSpecification<T> implements Specification<T> {
 
@@ -22,7 +21,7 @@ public class SearchSpecification<T> implements Specification<T> {
         Predicate predicate = cb.equal(cb.literal(Boolean.TRUE), Boolean.TRUE);
 
         for (FilterRequest filter : this.request.getFilters()) {
-            log.info("Filter: {} {} {}", filter.getKey(), filter.getOperator().toString(), filter.getValue());
+//            log.info("Filter: {} {} {}", filter.getKey(), filter.getOperator().toString(), filter.getValue());
             predicate = filter.getOperator().build(root, cb, filter, predicate);
         }
 

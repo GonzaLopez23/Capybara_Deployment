@@ -1,5 +1,8 @@
 package com.example.capybara.controllers;
 
+import com.example.capybara.common.FilterRequest;
+import com.example.capybara.common.SearchRequest;
+import com.example.capybara.common.SortRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -7,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.capybara.entities.Base;
+
+import java.util.List;
 
 public abstract class BaseControllerImpl<E extends Base, S extends com.example.capybara.services.BaseServiceImpl<E, Long>> implements BaseController<E, Long>{
 
@@ -31,6 +36,25 @@ public abstract class BaseControllerImpl<E extends Base, S extends com.example.c
         try {
 
             return ResponseEntity.status(HttpStatus.OK).body(servicio.findAll(pageable));
+
+        } catch(Exception e) {
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde.\"}");
+
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> search(
+            @RequestParam List<FilterRequest> filters,
+            @RequestParam List<SortRequest> sorts,
+            @RequestParam Integer page,
+            @RequestParam Integer size
+    ){
+        try {
+            SearchRequest searchRequest = new SearchRequest(filters, sorts, page, size);
+
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(searchRequest));
 
         } catch(Exception e) {
 

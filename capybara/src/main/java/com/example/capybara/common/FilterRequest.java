@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
+
 import java.util.List;
 
 
@@ -21,7 +21,7 @@ public class FilterRequest<T extends Base>  {
 
     private Operator operator;
 
-//    private FieldType fieldType; --> T : class   + key
+   private FieldType fieldType;
 
     // object puede ser generic
 
@@ -30,16 +30,7 @@ public class FilterRequest<T extends Base>  {
         Class cls = T.key.getClass();
         return  cls.getComponentType();
     }
-
-    /*
-    class Product {
-        private String name;
-        ....
-    }
-
-    t.[key].class --> string
-
-     */
+    */
 
     private  Object value;
 
