@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface CarritoProductoDetalleRepository extends BaseRepository<CarritoProductoDetalle, Long> {
 
     @Query(value = "SELECT cpd FROM CarritoProductoDetalle cpd WHERE cpd.cantidadCarritoProductoDetalle=:filtro")
-    Page<CarritoProductoDetalle> search(@Param("filtro") int filtro, Pageable pageable);
+    Page<CarritoProductoDetalle> search(@Param("filtro") float filtro, Pageable pageable);
 }

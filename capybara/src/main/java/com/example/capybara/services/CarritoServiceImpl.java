@@ -22,7 +22,7 @@ public class CarritoServiceImpl extends BaseServiceImpl<Carrito, Long> implement
     }
 
     @Override
-    public List<Carrito> search(String filtro) throws Exception {
+    public List<Carrito> search(float filtro) throws Exception {
         try{
             List<Carrito> carritos = carritoRepository.search(filtro);
             return carritos;
@@ -32,7 +32,7 @@ public class CarritoServiceImpl extends BaseServiceImpl<Carrito, Long> implement
     }
 
     @Override
-    public Page<Carrito> search(String filtro, Pageable pageable) throws Exception {
+    public Page<Carrito> search(float filtro, Pageable pageable) throws Exception {
         try{
             Page<Carrito> carritos = carritoRepository.search(filtro, pageable);
             return carritos;

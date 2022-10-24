@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class CarritoProductoDetalleController extends BaseControllerImpl<CarritoProductoDetalle, CarritoProductoDetalleServiceImpl>{
 
     @GetMapping("/searchPaged")
-    public ResponseEntity<?> search(@RequestParam int filtro, Pageable pageable){
+    public ResponseEntity<?> search(@RequestParam float filtro, Pageable pageable){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro, pageable));
         }catch (Exception e){

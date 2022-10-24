@@ -14,9 +14,9 @@ import java.util.List;
 public interface CarritoRepository extends BaseRepository<Carrito, Long> {
 
     @Query(value = "SELECT c FROM Carrito c WHERE c.totalCarrito=:filtro")
-    List<Carrito> search(@Param("filtro") String filtro);
+    List<Carrito> search(@Param("filtro") float filtro);
 
     @Query(value = "SELECT c FROM Carrito c WHERE c.totalCarrito=:filtro")
-    Page<Carrito> search(@Param("filtro") String filtro, Pageable pageable);
+    Page<Carrito> search(@Param("filtro") float filtro, Pageable pageable);
 
 }

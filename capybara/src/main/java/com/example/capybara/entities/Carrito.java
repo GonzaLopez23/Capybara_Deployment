@@ -22,7 +22,7 @@ public class Carrito extends Base{
     @Column(name = "total_carrito")
     private float totalCarrito;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
     @JoinTable(
             name = "carrito_carrito_detalle",
             joinColumns = @JoinColumn(name = "carrito_id"),
