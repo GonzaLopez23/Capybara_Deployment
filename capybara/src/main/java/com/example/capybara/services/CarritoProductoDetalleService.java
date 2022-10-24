@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface CarritoProductoDetalleService extends BaseService<CarritoProductoDetalle, Long>{
 
-    Page<CarritoProductoDetalle> search(String filtro, Pageable pageable) throws Exception;
+    Page<CarritoProductoDetalle> search(int filtro, Pageable pageable) throws Exception;
 
 }

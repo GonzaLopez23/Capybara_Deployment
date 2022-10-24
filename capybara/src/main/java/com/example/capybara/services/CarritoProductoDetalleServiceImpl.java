@@ -18,7 +18,7 @@ public class CarritoProductoDetalleServiceImpl extends BaseServiceImpl<CarritoPr
     }
 
     @Override
-    public Page<CarritoProductoDetalle> search(String filtro, Pageable pageable) throws Exception {
+    public Page<CarritoProductoDetalle> search(int filtro, Pageable pageable) throws Exception {
         try{
             Page<CarritoProductoDetalle> carritoProductoDetalles = carritoProductoDetalleRepository.search(filtro, pageable);
             return carritoProductoDetalles;
