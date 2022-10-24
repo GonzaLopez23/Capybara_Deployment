@@ -17,13 +17,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Audited
-public class Factura extends Base{
+public class Factura extends Base {
 
     @Column(name = "numero_factura")
     private int numeroFactura;
 
     private float total;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.DETACH, orphanRemoval = true)
     private List<FacturaDetalle> detalles = new ArrayList<>();
 }

@@ -1,0 +1,7 @@
+###
+#@no-log
+
+GET http://localhost:9000/api/v1/facturas
+Accept: application/json
+
+###

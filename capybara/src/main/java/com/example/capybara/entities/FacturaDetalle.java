@@ -15,14 +15,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Audited
-public class FacturaDetalle extends Base{
+public class FacturaDetalle extends Base {
 
     private int cantidad;
 
     private float subtotal;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_producto")
     private Producto producto;
+
 
 }
