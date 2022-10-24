@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CarritoProductoDetalleServiceImpl extends BaseServiceImpl<CarritoProductoDetalle, Long> implements CarritoProductoDetalleService{
+public class CarritoProductoDetalleServiceImpl extends BaseServiceImpl<CarritoProductoDetalle, Long> implements CarritoProductoDetalleService {
     @Autowired
     private CarritoProductoDetalleRepository carritoProductoDetalleRepository;
 
-    public CarritoProductoDetalleServiceImpl(BaseRepository<CarritoProductoDetalle, Long> baseRepository){
-        super(baseRepository);
+    public CarritoProductoDetalleServiceImpl(BaseRepository<CarritoProductoDetalle, Long> baseRepository) {
+        super(baseRepository, CarritoProductoDetalle.class);
     }
 }

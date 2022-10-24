@@ -15,16 +15,16 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     private ProductoRepository productoRepository;
 
     public ProductoServiceImpl(BaseRepository<Producto, Long> baseRepository) {
-        super(baseRepository);
+        super(baseRepository, Producto.class);
     }
 
 
     @Override
     public List<Producto> search(String filtro) throws Exception {
-        try{
+        try {
             List<Producto> productos = productoRepository.searchNativo(filtro);
             return productos;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
