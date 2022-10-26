@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long> implements CategoriaService{
+public class CategoriaServiceImpl extends BaseServiceImpl<Categoria, Long> implements CategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    public CategoriaServiceImpl(BaseRepository<Categoria, Long> baseRepository){
-        super(baseRepository);
+    public CategoriaServiceImpl(BaseRepository<Categoria, Long> baseRepository) {
+        super(baseRepository, Categoria.class);
     }
 
     @Override

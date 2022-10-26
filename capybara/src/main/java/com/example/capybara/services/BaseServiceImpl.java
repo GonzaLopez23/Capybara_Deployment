@@ -1,11 +1,19 @@
 package com.example.capybara.services;
 
+import com.example.capybara.common.search.GenericSearchQueryCriteriaConsumer;
+import com.example.capybara.common.search.SearchCriteria;
+import com.example.capybara.entities.Base;
+import com.example.capybara.repositories.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.example.capybara.entities.Base;
-import com.example.capybara.repositories.BaseRepository;
-
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
@@ -15,10 +23,20 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
 
     protected BaseRepository<E, ID> baseRepository;
 
-    public BaseServiceImpl(BaseRepository<E,ID> baseRepository) {
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    private Class<E> entityClass;
+
+    public BaseServiceImpl(BaseRepository<E, ID> baseRepository, Class<E> clazz) {
 
         this.baseRepository = baseRepository;
+        this.entityClass = clazz;
+    }
 
+
+    public Class<E> getEntityClass() {
+        return this.entityClass;
     }
 
     @Override
@@ -30,7 +48,7 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             List<E> entities = baseRepository.findAll();
             return entities;
 
-        } catch(Exception e) {
+        } catch (Exception e) {
 
             throw new Exception(e.getMessage());
         }
@@ -45,7 +63,7 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             Optional<E> entitieOpcional = baseRepository.findById(id);
             return entitieOpcional.get();
 
-        } catch(Exception e) {
+        } catch (Exception e) {
 
             throw new Exception(e.getMessage());
         }
@@ -53,14 +71,14 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
 
     @Override
     @Transactional
-    public Page<E> findAll(Pageable pageable) throws Exception{
+    public Page<E> findAll(Pageable pageable) throws Exception {
 
         try {
 
             Page<E> entities = baseRepository.findAll(pageable);
             return entities;
 
-        } catch(Exception e) {
+        } catch (Exception e) {
 
             throw new Exception(e.getMessage());
         }
@@ -75,7 +93,7 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             entity = baseRepository.save(entity);
             return entity;
 
-        } catch(Exception e) {
+        } catch (Exception e) {
 
             throw new Exception(e.getMessage());
         }
@@ -92,7 +110,7 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
             entityUpdate = baseRepository.save(entity);
             return entityUpdate;
 
-        } catch(Exception e) {
+        } catch (Exception e) {
 
             throw new Exception(e.getMessage());
         }
@@ -115,9 +133,28 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
 
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
 
-                throw new Exception(e.getMessage());
-            }
+            throw new Exception(e.getMessage());
         }
     }
+
+
+    @Override
+    public List<E> search(final List<SearchCriteria> params) {
+        final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<E> query = builder.createQuery(getEntityClass());
+        final Root<E> r = query.from(getEntityClass());
+
+        Predicate predicate = builder.conjunction();
+        GenericSearchQueryCriteriaConsumer searchConsumer = new GenericSearchQueryCriteriaConsumer(predicate, builder, r);
+        params.stream().forEach(searchConsumer);
+        predicate = searchConsumer.getPredicate();
+        query.where(predicate);
+
+        TypedQuery<E> entityManagerQuery = entityManager.createQuery(query);
+
+        return entityManagerQuery.getResultList();
+    }
+
+}

@@ -17,26 +17,38 @@ public class ProductoServiceImpl extends BaseServiceImpl<Producto, Long> impleme
     private ProductoRepository productoRepository;
 
     public ProductoServiceImpl(BaseRepository<Producto, Long> baseRepository) {
-        super(baseRepository);
+        super(baseRepository, Producto.class);
     }
 
-    @Override
-    public List<Producto> search(String filtro) throws Exception {
-        try{
-            List<Producto> productos = productoRepository.search(filtro);
-            return productos;
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
+//
+//    @Override
+//    public List<Producto> search(String filtro) throws Exception {
+//        try {
+//            List<Producto> productos = productoRepository.searchNativo(filtro);
+//            return productos;
+//        } catch (Exception e) {
+//            throw new Exception(e.getMessage());
+//        }
+//    }
+//
+//    @Override
+//    public List<Producto> search(String filtro) throws Exception {
+//        try{
+//            List<Producto> productos = productoRepository.search(filtro);
+//            return productos;
+//        }catch (Exception e){
+//            throw new Exception(e.getMessage());
+//        }
+//    }
+//
+//    @Override
+//    public Page<Producto> search(String filtro, Pageable pageable) throws Exception {
+//        try{
+//            Page<Producto> productos = productoRepository.search(filtro, pageable);
+//            return productos;
+//        }catch (Exception e){
+//            throw new Exception(e.getMessage());
+//        }
+//    }
 
-    @Override
-    public Page<Producto> search(String filtro, Pageable pageable) throws Exception {
-        try{
-            Page<Producto> productos = productoRepository.search(filtro, pageable);
-            return productos;
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
 }

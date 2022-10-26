@@ -14,7 +14,9 @@ public class LocalidadServiceImpl extends BaseServiceImpl<Localidad, Long> imple
     @Autowired
     private LocalidadRepository localidadRepository;
 
-    public LocalidadServiceImpl(BaseRepository<Localidad, Long> baseRepository) {super(baseRepository);}
+    public LocalidadServiceImpl(BaseRepository<Localidad, Long> baseRepository) {
+        super(baseRepository, Localidad.class);
+    }
 
     public Page<Localidad> search(String filtro, Pageable pageable) throws Exception {
         try{
@@ -24,4 +26,5 @@ public class LocalidadServiceImpl extends BaseServiceImpl<Localidad, Long> imple
             throw new Exception(e.getMessage());
         }
     }
+
 }
