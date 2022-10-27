@@ -6,24 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name = "carrito_producto_detalle")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Audited
-public class CarritoProductoDetalle extends Base{
+public class CarritoProductoDetalle extends Base {
 
-    @Column(name = "cantidad_carrito_producto_detalle")
-    private int cantidadCarritoProductoDetalle;
 
-    @Column(name = "subtotal_carrito_producto_detalle")
-    private float subtotalCarritoProductoDetalle;
+    private int cantidad;
+
+
+    private float subtotal;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "carrito_producto_detalle_productos")
     private Producto producto;
 }

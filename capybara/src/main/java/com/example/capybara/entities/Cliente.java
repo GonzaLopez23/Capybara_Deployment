@@ -9,35 +9,30 @@ import org.hibernate.envers.Audited;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-@Table(name = "cliente")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Audited
-public class Cliente extends Base{
+public class Cliente extends Base {
 
-    @Column(name = "nombre_cliente")
-    private String nombreCliente;
+    private String nombre;
 
-    @Column(name = "apellido_cliente")
-    private String apellidoCliente;
+    private String apellido;
 
-    @Column(name = "dni_cliente")
-    private int dniCliente;
+    private int dni;
 
-    @Column(name = "email_cliente")
-    private String emailCliente;
+    private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_carrito")
     private Carrito carrito;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Factura> facturasCliente = new ArrayList<Factura>();
+    private List<Factura> facturasCliente = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "domicilio_cliente")
-    private Domicilio  domicilio;
+    private Domicilio domicilio;
 }
